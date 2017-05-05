@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+		<h1> {{title}}</h1>
+		<hr>
+	</div>
+	<div class="row">
+		<div class="col-xs-6"><app-form *ngIf="!left"></app-form></div>
+		<div class="col-xs-6"><app-form [hidden]="right"></app-form></div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-xs-6"><input type="checkbox" [(ngModel)]="left">Hide Left</div>
+		<div class="col-xs-6"><input type="checkbox" [(ngModel)]="right">Hide Right</div>		
+	</div>
+	<hr>
+	<div [ngSwitch]="question">
+		<div class="row">
+			<h3 (click)="question=0">Jaka jest różnica pomiędzy tymi dwiema metodami?</h3>
+			<p *ngSwitchCase="0"><b>NgIF</b> usówa element ze strony kiedy warunek nie jest spełniony<br>
+			<b>hidden</b> ukrywa element kiedy warunek nie jest spełniony
+			</p>
+		</div>
+		<hr>
+		<div class="row">
+			<h3 (click)="question=1">Kiedy używamy której z nich?</h3>
+			<p *ngSwitchCase="1"><b>Hidden</b> używamy głównie w elementach które nie podowują obciążenia dla Angulara np. tekst<br>
+			<b>ngIf</b> kiedy elementy będą niepotrzebnie obciążać angulara np. formularze
+			</p>
+		</div>
+		<hr>
+		<div class="row">
+			<h3 (click)="question=2">Jak można inaczej rozwiązać problemy, które powoduje pierwsza z nich?</h3>
+			<p *ngSwitchCase="2">Możemy zapisywać dane z kontrolki do zmiennych po czym je wczytywać <b>ngModel</b></p>
+		</div>
+	</div>
+</div>
